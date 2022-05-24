@@ -1,0 +1,60 @@
+
+def verification(p_score,label_i):
+  """
+    input: 
+              p_score - vector 10x1 containing the probabilities
+              label[i] - scalar 
+              
+    output: 
+              binaryResult - True or False 
+  """ 
+  binaryResult = np.argmax(p_score) == label_i
+  verbose=0
+  if verbose:
+    print('the score is {0} and the label is {1}. So the result will be {2}'.format(p_score,label_i,binaryResult))
+  
+  return binaryResult
+
+def accuracy(images,num_of_images, labels):
+  """
+    input: 
+              images - vector of images 
+              uu - parameters of the main network
+              uu_T - parameters of the final layer
+               
+              
+    output: 
+              accuracy_value - a number belonging to (0,1) 
+  """ 
+  count = 0
+  for i in range(num_of_images):
+    
+    _,xx_T = forward_pass(uu,images[i],uu_T) # T x d
+    #print('I am evaluating the ', i , ' image')
+    _,p_score = soft_max(xx_T)
+    count = count + int(verification(p_score,labels[i]))
+  
+  accuracy_value = count/num_of_images
+
+  return accuracy_value
+    
+  ###############################################
+  
+  
+  
+ 
+  
+  
+  
+  
+  # NETWORK
+  
+ 
+  
+  
+  
+  
+  ###############################################
+  
+
+print(accuracy(images[300:400],100,labels[300:400]))
