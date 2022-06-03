@@ -214,7 +214,7 @@ def soft_max(xx_T):
 ###############################################################################
 
 J = np.zeros((max_iters))                       # Cost
-
+#hiu
 # Initial Weights / Initial Input Trajectory
 uu = np.random.randn(T-1, d, d+1)
 uu_T = np.random.randn(N_class, d+1)
